@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlanningTest {
-
+    private final int SIZE = 100;
     private Planning planning;
     private Reservation res1, res2, res3;
     private DateCalendrier date1, date2, date3;
@@ -38,6 +38,14 @@ class PlanningTest {
     void testAjoutReservationInvalide() {
         Reservation invalide = new Reservation(null, plage1);
         assertFalse(planning.ajout(invalide));
+    }
+
+    @Test
+    void testAjoutReservationQuandPlein() {
+        for (int i = 0; i < SIZE; i++) {
+            planning.ajout(new Reservation(new DateCalendrier(2025, 4, 10), plage1));
+        }
+        assertFalse(planning.ajout(res1));
     }
 }
 

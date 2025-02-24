@@ -13,6 +13,7 @@ class PlanningTest {
     private Reservation res1, res2, res3;
     private DateCalendrier date1, date2, date3;
     private PlageHoraire plage1, plage2;
+    Reservation resInvalide = new Reservation(null, null);
 
     @BeforeEach
     void setUp() {
@@ -69,6 +70,13 @@ class PlanningTest {
         assertTrue(reservations.isEmpty());
     }
 
+    @Test
+    void testAjoutReservationInvalideQuandPlein() {
+        for (int i = 0; i < SIZE; i++) {
+            planning.ajout(new Reservation(new DateCalendrier(2025, 4, 10), plage1));
+        }
+        assertFalse(planning.ajout(resInvalide), "Ajout d'une réservation invalide dans un tableau plein devrait retourner false");
+    }
 }
 
 

@@ -3,6 +3,8 @@ package modele;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PlanningTest {
@@ -47,6 +49,19 @@ class PlanningTest {
         }
         assertFalse(planning.ajout(res1));
     }
+
+    /*** 🔹 TESTS POUR LA MÉTHODE getReservations 🔹 ***/
+
+    @Test
+    void testGetReservationsDatePresente() {
+        planning.ajout(res1);
+        planning.ajout(res2);
+        List<Reservation> reservations = planning.getReservations(date1);
+        assertEquals(2, reservations.size());
+        assertTrue(reservations.contains(res1));
+        assertTrue(reservations.contains(res2));
+    }
+
 }
 
 

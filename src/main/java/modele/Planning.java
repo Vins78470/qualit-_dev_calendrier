@@ -1,7 +1,6 @@
 package modele;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 public class Planning {
     private final int SIZE = 100;
@@ -26,7 +25,7 @@ public class Planning {
     }
 
 
-    public ArrayList<Reservation> getReservations(Date parDate) {
+    public ArrayList<Reservation> getReservations(DateCalendrier parDate) {
         ArrayList<Reservation> reservations = new ArrayList<>();
 
         for (Reservation res : chTabReserv) {

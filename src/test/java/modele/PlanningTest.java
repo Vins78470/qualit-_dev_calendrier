@@ -91,6 +91,20 @@ class PlanningTest {
         });
         assertEquals("Date invalide", exception.getMessage(), "Une date invalide doit générer une exception");
     }
+
+    @Test
+    void testPlusAncienneReserv() {
+        planning.ajout(res1); // Supposons res1 = 2024-06-10
+        planning.ajout(res2); // Supposons res2 = 2024-01-15
+        planning.ajout(res3); // Supposons res3 = 2023-05-20 (le plus ancien)
+
+        // Chercher la plus ancienne réservation entre les indices 0 et 2
+        int indiceAncienne = planning.plusAncienneReserv(0, 2);
+
+        // Vérifier que l'indice retourné correspond bien à res3
+        assertEquals(2, indiceAncienne, "L'indice de la plus ancienne réservation doit être 2");
+    }
+
 }
 
 

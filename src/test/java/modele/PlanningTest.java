@@ -104,6 +104,12 @@ class PlanningTest {
         // Vérifier que l'indice retourné correspond bien à res3
         assertEquals(2, indiceAncienne, "L'indice de la plus ancienne réservation doit être 2");
     }
+    @Test
+    void testPlusAncienneReservTableauVide() {
+        assertThrows(IllegalArgumentException.class, () -> planning.plusAncienneReserv(0, 0),
+                "Si le tableau est vide, la méthode doit lever une exception");
+    }
+
 
 }
 

@@ -42,8 +42,8 @@ public class Planning {
 
 
     public int plusAncienneReserv(int parDeb, int parFin) {
-        if (parDeb < 0 || parFin >= chTabReserv.size() || parDeb > parFin) {
-            throw new IllegalArgumentException("Indices invalides");
+        if (chTabReserv.isEmpty() || parDeb < 0 || parFin >= chTabReserv.size() || parDeb > parFin) {
+            throw new IllegalArgumentException("Indices invalides ou tableau vide");
         }
 
         int i_plusAncien = -1;
@@ -58,6 +58,7 @@ public class Planning {
 
         return i_plusAncien; // Retourne l'indice ou -1 si toutes les valeurs sont null
     }
+
 
     public void tri() {
         for (int i = 0; i < chTabReserv.size() - 1; i++) {

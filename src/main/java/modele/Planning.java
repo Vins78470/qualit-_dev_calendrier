@@ -1,6 +1,7 @@
 package modele;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class Planning {
     private final int SIZE = 100;
@@ -25,17 +26,20 @@ public class Planning {
     }
 
 
-    public ArrayList<Reservation> getReservations(DateCalendrier parDate) {
-        ArrayList<Reservation> reservations = new ArrayList<>();
-
-        for (Reservation res : chTabReserv) {
-            if (res != null && res.getDate().equals(parDate)) {
-                reservations.add(res);
+    public List<Reservation> getReservations(DateCalendrier date) {
+        if (date == null) {
+            throw new IllegalArgumentException("Date invalide");
+        }
+        List<Reservation> result = new ArrayList<>();
+        for (Reservation r : chTabReserv) {
+            if (r != null && r.getDate().equals(date)) {
+                result.add(r);
             }
         }
-
-        return reservations;
+        return result;
     }
+
+
 
     public int plusAncienneReserv(int parDeb, int parFin) {
         if (parDeb < 0 || parFin >= chTabReserv.size() || parDeb > parFin) {

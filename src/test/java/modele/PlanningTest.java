@@ -83,6 +83,14 @@ class PlanningTest {
         List<Reservation> reservations = planning.getReservations(date1);
         assertTrue(reservations.isEmpty(), "Si le tableau est vide, la liste doit être vide");
     }
+
+    @Test
+    void testGetReservationsAvecDateInvalide() {
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            planning.getReservations(null);
+        });
+        assertEquals("Date invalide", exception.getMessage(), "Une date invalide doit générer une exception");
+    }
 }
 
 

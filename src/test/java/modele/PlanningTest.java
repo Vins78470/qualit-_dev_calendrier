@@ -109,6 +109,20 @@ class PlanningTest {
         assertThrows(IllegalArgumentException.class, () -> planning.plusAncienneReserv(0, 0),
                 "Si le tableau est vide, la méthode doit lever une exception");
     }
+    @Test
+    void testPlusAncienneReservIndicesInvalides() {
+        planning.ajout(res1);
+        planning.ajout(res2);
+
+        // Indice de début négatif
+        assertThrows(IllegalArgumentException.class, () -> planning.plusAncienneReserv(-1, 1));
+
+        // Indice de fin hors limites
+        assertThrows(IllegalArgumentException.class, () -> planning.plusAncienneReserv(0, 10));
+
+        // Indice de début > Indice de fin
+        assertThrows(IllegalArgumentException.class, () -> planning.plusAncienneReserv(2, 1));
+    }
 
 
 }

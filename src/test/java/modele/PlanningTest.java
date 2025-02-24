@@ -77,6 +77,12 @@ class PlanningTest {
         }
         assertFalse(planning.ajout(resInvalide), "Ajout d'une réservation invalide dans un tableau plein devrait retourner false");
     }
+
+    @Test
+    void testGetReservationsTableauVide() {
+        List<Reservation> reservations = planning.getReservations(date1);
+        assertTrue(reservations.isEmpty(), "Si le tableau est vide, la liste doit être vide");
+    }
 }
 
 

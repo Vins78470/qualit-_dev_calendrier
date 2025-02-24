@@ -33,6 +33,12 @@ class PlanningTest {
     void testAjoutReservationValide() {
         assertTrue(planning.ajout(res1));
     }
+
+    @Test
+    void testAjoutReservationInvalide() {
+        Reservation invalide = new Reservation(null, plage1);
+        assertFalse(planning.ajout(invalide));
+    }
 }
 
 

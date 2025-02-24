@@ -62,6 +62,13 @@ class PlanningTest {
         assertTrue(reservations.contains(res2));
     }
 
+    @Test
+    void testGetReservationsDateAbsente() {
+        planning.ajout(res1);
+        List<Reservation> reservations = planning.getReservations(date2);
+        assertTrue(reservations.isEmpty());
+    }
+
 }
 
 

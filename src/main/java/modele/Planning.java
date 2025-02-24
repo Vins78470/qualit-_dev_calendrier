@@ -11,20 +11,20 @@ public class Planning {
         chTabReserv = new ArrayList<>();
     }
 
-    public Boolean ajout(Reservation parReserv) {
+    public boolean ajout(Reservation parReserv) {
         if (parReserv == null || !parReserv.estValide()) {
-            System.out.println("Réservation invalide !");
+            System.err.println("Réservation invalide !");
             return false;
         }
 
-        if (chTabReserv.size() < SIZE) { // Vérifie si on n'a pas atteint la limite
-            chTabReserv.add(parReserv);
-            return true;
+        if (chTabReserv.size() >= SIZE) {
+            System.err.println("Tableau plein !");
+            return false;
         }
 
-        System.out.println("Tableau plein !");
-        return false;
+        return chTabReserv.add(parReserv);
     }
+
 
     public ArrayList<Reservation> getReservations(Date parDate) {
         ArrayList<Reservation> reservations = new ArrayList<>();
